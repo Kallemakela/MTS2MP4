@@ -1,7 +1,27 @@
 #!/bin/bash
 
-# Load environment variables from .env file
-source .env
+# Function to handle the SIGINT signal (Ctrl+C)
+function on_interrupt {
+    echo "Aborting the script..."
+    exit 1
+}
+
+# Set the signal trap to call the on_interrupt function
+trap on_interrupt SIGINT
+
+# Load environment variables from .env file in the script's directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPT_DIR/.env"
+
+# Interpret SOURCE_DIR path as relative or absolute based on the "./" prefix
+if [[ "$SOURCE_DIR" == "./"* ]]; then
+    SOURCE_DIR="$SCRIPT_DIR/${SOURCE_DIR:2}"
+fi
+
+# Interpret DESTINATION_DIR path as relative or absolute based on the "./" prefix
+if [[ "$DESTINATION_DIR" == "./"* ]]; then
+    DESTINATION_DIR="$SCRIPT_DIR/${DESTINATION_DIR:2}"
+fi
 
 # Check if the source directory exists
 if [ ! -d "$SOURCE_DIR" ]; then
