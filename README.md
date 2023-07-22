@@ -9,44 +9,31 @@ The MTS to MP4 Converter is a simple shell script designed to convert .MTS (AVCH
 - macOS
 - ffmpeg (installed via Homebrew)
 
-## Installation
-
-1. Make sure you have Homebrew installed on your macOS system. If not, you can install it by following the instructions at https://brew.sh/
-
-2. Open Terminal on your macOS system.
-
-3. Install ffmpeg using Homebrew by executing the following command:
-   ```
-   brew install ffmpeg
-   ```
-
 ## Usage
 
-0. Create an `.env` file in the same directory as the script and add the following lines:
+1. Create a file named `.env` in the same directory as the script (`MTS2MP4.command`) and define the SOURCE_DIR and DESTINATION_DIR variables as follows:
 
-```bash
-# Specify the source and destination directories
-SOURCE_DIR="STREAM"
-DESTINATION_DIR="STREAM_MP4"
-```
+   ```ini
+   # .env file
 
-1. Place all the .MTS files you want to convert in the source directory (default: "STREAM").
+   # Specify the source and destination directories
+   # Use "./" prefix for relative paths and full path for absolute paths
 
-2. Open Terminal on your macOS system.
+   # Source directory for .MTS files
+   SOURCE_DIR="/CARD/STREAM"
 
-3. Navigate to the directory containing the script.
-
-4. Run the script using the following command:
-   ```
-   bash mts_to_mp4_converter.sh
+   # Destination directory for converted .MP4 files
+   DESTINATION_DIR="./STREAM_MP4"
    ```
 
-5. The script will check if the source directory exists and if the destination directory exists. If the source directory is not found, it will raise an error and exit. If the destination directory is not found, it will ask if you want to create it.
+2. Run the script by double-clicking the `MTS2MP4.command` or using the following command:
 
-6. The script will then proceed to convert all .MTS files in the source directory to .MP4 files in the destination directory.
+   ```
+   ./MTS2MP4.sh
+   ```
 
-7. The converted .MP4 files will be saved in the destination directory (default: "STREAM_MP4") with the same filenames as the original .MTS files.
+3. During execution, if you want to abort the script, you can press Ctrl+C to trigger a graceful exit.
 
-You can customize the source and destination directories by modifying the variables `SOURCE_DIR` and `DESTINATION_DIR` in the script.
+## Customization
 
-
+You can customize the source and destination directories by modifying the SOURCE_DIR and DESTINATION_DIR variables in the `.env` file. The script will interpret SOURCE_DIR and DESTINATION_DIR paths as relative if they start with "./"; otherwise, they will be considered absolute.
