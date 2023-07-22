@@ -1,6 +1,7 @@
-# Specify the source and destination directories
-SOURCE_DIR="STREAM"
-DESTINATION_DIR="STREAM_MP4"
+#!/bin/bash
+
+# Load environment variables from .env file
+source .env
 
 # Check if the source directory exists
 if [ ! -d "$SOURCE_DIR" ]; then

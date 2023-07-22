@@ -22,7 +22,7 @@ The MTS to MP4 Converter is a simple shell script designed to convert .MTS (AVCH
 
 ## Usage
 
-0. Specify the source and destination directories in the script. You can change these by modifying the following lines in the script:
+0. Create an `.env` file in the same directory as the script and add the following lines:
 
 ```bash
 # Specify the source and destination directories
